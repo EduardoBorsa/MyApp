@@ -1,0 +1,30 @@
+<div class="is-divider wb-divider"></div>
+<%= form_for @changeset, @action, fn f -> %>
+  <div class="field">
+    <label class="label">Name</label>
+    <p class="control">
+      <%= text_input f, :name, autofocus: "on", placeholder: "Name", class: "input" %>
+      <div class="wb-field-error">
+        <%= error_tag f, :name %>
+      </div>
+    </p>
+  </div>
+  <div class="field">
+    <label class="label">Status</label>
+    <p class="control select is-fullwidth">
+      <%= select f, :active, [
+          [key: "Active", value: "true"],
+          [key: "Inactive", value: "false"]
+        ] %>
+    </p>
+    <div class="wb-field-error">
+      <%= error_tag f, :active %>
+    </div>
+  </div>
+  <div class="is-divider wb-divider"></div>
+  <div class="field">
+    <p class="control">
+      <%= submit "Save Account", class: "button is-primary is-fullwidth" %>
+    </p>
+  </div>
+<% end %>

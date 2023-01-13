@@ -1,0 +1,32 @@
+<div class="column is-one-third is-offset-one-third">
+  <div class="box wb-box">
+    <hr/>
+    <%= form_for @conn, Routes.session_path(@conn, :create), [name: :session], fn f -> %>
+      <div class="field">
+        <label class="label">Email Address</label>
+        <p class="control has-icons-left">
+          <%= email_input f, :email, autofocus: "on", placeholder: "Email", class: "input" %>
+          <span class="icon is-small is-left">
+            <ion-icon name="mail-outline"></ion-icon>
+          </span>
+        </p>
+      </div>
+      <div class="field">
+        <label class="label">Password</label>
+        <p class="control has-icons-left">
+          <%= password_input f, :password, autocomplete: "off", placeholder: "Password", class: "input" %>
+          <span class="icon is-small is-left">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+          </span>
+        </p>
+      </div>
+      <br/>
+      <div class="field">
+        <p class="control">
+          <%= submit "Log In", class: "is-primary shadow button is-fullwidth" %>
+        </p>
+      </div>
+    <% end %>
+    <br/>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="columns is-vcentered">
+  <div class="column is-6 is-offset-3">
+    <div class="columns is-vcentered">
+      <div class="column">
+        <h3 class="title">New Account</h3>
+      </div>
+      <div class="column has-text-right">
+        <%= link "Back", to: Routes.account_path(@conn, :index), class: "button is-primary is-outlined" %>
+      </div>
+    </div>
+    <div class="columns is-vcentered">
+      <div class="column">
+        <%= render "form.html", Map.put(assigns, :action, Routes.account_path(@conn, :create)) %>
+      </div>
+    </div>
+  </div>
+</div>

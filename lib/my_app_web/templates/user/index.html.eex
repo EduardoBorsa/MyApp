@@ -1,0 +1,46 @@
+<div class="columns is-vcentered">
+  <div class="column is-10 is-offset-1">
+    <div class="columns is-vcentered">
+      <div class="column">
+        <h3 class="title">Users</h3>
+      </div>
+      <div class="column">
+        <%= link "New User", to: Routes.user_path(@conn, :new), class: "button is-primary is-pulled-right" %>
+      </div>
+    </div>
+    <div class="box wb-box has-min-height">
+      <div class="table-container">
+        <table class="table wb-table is-bordered is-striped is-hoverable is-fullwidth has-text-centered">
+          <thead>
+            <tr>
+              <th>Account</th>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+              <th>Active</th>
+              <th>Verified</th>
+              <th>Role</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= for user <- @users do %>
+              <tr>
+                <td><%= user.account.name %></td>
+                <td><%= user.firstname %></td>
+                <td><%= user.lastname %></td>
+                <td><%= user.email %></td>
+                <td><%= user.active %></td>
+                <td><%= user.verified %></td>
+                <td>
+                  <span><%= link "Edit", to: Routes.user_path(@conn, :edit, user), class: "button is-small is-white" %></span>
+                  <span><%= link "Delete", to: Routes.user_path(@conn, :delete, user), class: "button is-small is-white", method: :delete, data: [confirm: "Are you sure you want to delete this user?"] %></span>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

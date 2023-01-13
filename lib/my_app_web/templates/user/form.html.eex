@@ -1,0 +1,65 @@
+<div class="is-divider wb-divider"></div>
+<%= form_for @changeset, @action, fn f -> %>
+  <div class="field">
+    <label class="label">Account</label>
+    <p class="control select is-fullwidth">
+      <%= select f, :account_id, Enum.map(@accounts, &{&1.name, &1.id}) %>
+    </p>
+  </div>
+  <div class="is-divider wb-divider"></div>
+  <div class="field">
+    <label class="label">First Name</label>
+    <p class="control">
+      <%= text_input f, :firstname, autofocus: "on", placeholder: "First Name", class: "input" %>
+      <div class="wb-field-error">
+        <%= error_tag f, :name %>
+      </div>
+    </p>
+  </div>
+  <div class="field">
+    <label class="label">Last Name</label>
+    <p class="control">
+      <%= text_input f, :lastname, autofocus: "on", placeholder: "Last Name", class: "input" %>
+      <div class="wb-field-error">
+        <%= error_tag f, :name %>
+      </div>
+    </p>
+  </div>
+  <div class="field">
+    <label class="label">Email Address</label>
+    <p class="control">
+      <%= if @edit_mode do %>
+        <%= text_input f, :email, autofocus: "on", placeholder: "Email Address", class: "input", disabled: true%>
+      <% else %>
+        <%= text_input f, :email, autofocus: "on", placeholder: "Email Address", class: "input"%>
+      <% end %>
+      <div class="wb-field-error">
+        <%= error_tag f, :email %>
+      </div>
+    </p>
+  </div>
+  <div class="field">
+    <label class="label">Status</label>
+    <p class="control select is-fullwidth">
+      <%= select f, :active, [
+          [key: "Active", value: "true"],
+          [key: "Inactive", value: "false"]
+        ] %>
+      <div class="wb-field-error">
+        <%= error_tag f, :active %>
+      </div>
+    </p>
+  </div>
+  <div class="is-divider wb-divider"></div>
+  <article class="message is-warning">
+    <div class="message-body">
+      <strong>Be very careful</strong> with the following option. Anyone who is a Workbench Admin <strong>will have access to everything in the platform.</strong>
+    </div>
+  </article>
+  <div class="is-divider wb-divider"></div>
+  <div class="field">
+    <p class="control">
+      <%= submit "Save User", class: "button is-primary is-fullwidth" %>
+    </p>
+  </div>
+<% end %>

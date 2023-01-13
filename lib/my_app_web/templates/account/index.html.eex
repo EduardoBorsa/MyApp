@@ -1,0 +1,37 @@
+<div class="columns is-vcentered">
+  <div class="column is-10 is-offset-1">
+    <div class="columns is-vcentered">
+      <div class="column">
+        <h3 class="title">Accounts</h3>
+      </div>
+      <div class="column">
+        <%= link "New Account", to: Routes.account_path(@conn, :new), class: "button is-primary is-pulled-right" %>
+      </div>
+    </div>
+    <div class="box wb-box has-min-height">
+      <div class="table-container">
+        <table class="table wb-table is-bordered is-striped is-hoverable is-fullwidth has-text-centered">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Active</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= for account <- @accounts do %>
+              <tr>
+                <td><%= account.name %></td>
+                <td><%= account.active %></td>
+                <td>
+                  <span><%= link "Edit", to: Routes.account_path(@conn, :edit, account), class: "button is-small is-white" %></span>
+                  <span><%= link "Delete", to: Routes.account_path(@conn, :delete, account), class: "button is-small is-white", method: :delete, data: [confirm: "Are you sure you want to delete this account?"] %></span>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
